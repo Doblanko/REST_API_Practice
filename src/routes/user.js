@@ -1,13 +1,10 @@
 import { Router } from 'express';
+import controllers from '../controllers';
 
 const router = Router();
 
-router.get('/', (req, res) => {
-  return res.send(Object.values(req.context.models.users));
-});
+router.get('/', controllers.userController.getAllUsers);
 
-router.get('/:userId', (req, res) => {
-  return res.send(req.context.models.users[req.params.userId]);
-});
+router.get('/:userId', controllers.userController.getUser);
 
 export default router;
